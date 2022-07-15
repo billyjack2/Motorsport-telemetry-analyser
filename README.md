@@ -1,6 +1,9 @@
 # Motorsport-telemetry-analyser
 Automated analysis of motorsport telemetry files such as low oil pressure, excessive RPM, etc.
 
+Requires Python3
+
+
 ## Roadmap
 ### Single file analysing 
 Command line analysing of a single telemetry file for common problems. Limits defined by a config file
@@ -14,7 +17,6 @@ Command line defining of vehicle parameter limits. This would allow command line
 ### Webapp 
 Outside this repo creating a webapplication to provide above functionality
 
-Requires a Python 3 env
 
 ## Usage
 In progress - will write usage doc once more finalized
