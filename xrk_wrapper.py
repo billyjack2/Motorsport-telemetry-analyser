@@ -197,6 +197,10 @@ class XrkWrapper():
         self.dll.get_lap_info(self.retval, index, start, duration)
         return LapInfo(start.value, duration.value)
 
+    def channelExists(self, index):
+        # TODO: index validation
+        return True
+
 # LapInfo contains the start time and duration of each lap
 class LapInfo:
     def __init__(self, startTime, duration):
