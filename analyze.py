@@ -37,14 +37,15 @@ def oilPress(wrapper:XrkWrapper, oilPsiIndex:int, rpmIndex:int):
 
 
 wrap = XrkWrapper()
-wrap.loadFile(os.path.dirname(__file__) + "\\" + "test.xrk")
+wrap.loadFile(os.path.dirname(__file__) + "\\test-files\\" + "test.xrk")
 a = Analyze(wrap)
 
 print(wrap.getTrackName())
 
 index = 10
 
-print(a.wrapper.getChannelName(index))
+
 print("min: " + str(a.getMin(index)))
 print("avg: " + str(a.getAvg(index)))
 print("max: " + str(a.getMax(index)))
+print(wrap.closeFile())

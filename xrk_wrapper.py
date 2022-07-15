@@ -17,7 +17,7 @@ class XrkWrapper():
             self.dll = cdll.LoadLibrary(path)
         except FileNotFoundError:
             print("file not found")
-            self.dll = cdll.LoadLibrary(os.path.dirname(__file__) + "\\" + dllName)
+            self.dll = cdll.LoadLibrary(os.path.dirname(__file__) + "\\lib\\" + dllName)
         except:
             print("Error - Unable to load XRK DLL")
             return
@@ -26,7 +26,7 @@ class XrkWrapper():
 
     def __init__(self):
         dllName = "MatLabXRK-2017-64-ReleaseU.dll"
-        self.dll = cdll.LoadLibrary(os.path.dirname(__file__) + "\\" + dllName)
+        self.dll = cdll.LoadLibrary(os.path.dirname(__file__) + "\\lib\\" + dllName)
 
         self.defineFunctions()
 
@@ -190,7 +190,7 @@ class XrkWrapper():
 
     def getLapInfo(self, index):
         # TODO: index validation check
-
+        
         start = ctypes.c_double()
         duration = ctypes.c_double()
 
@@ -200,6 +200,10 @@ class XrkWrapper():
     def channelExists(self, index):
         # TODO: index validation
         return True
+
+    def closeFile(self):
+        self.dll.close_file_i(1)
+
 
 # LapInfo contains the start time and duration of each lap
 class LapInfo:
