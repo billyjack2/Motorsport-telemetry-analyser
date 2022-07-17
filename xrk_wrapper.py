@@ -147,11 +147,15 @@ class XrkWrapper():
         return channelCnt
 
     def getChannelsList(self):
-        chList = None
+        chList = list()
         for ch in range(self.getChannelsCount()):
             channel = Channel(ch, self.getChannelName(ch), self.getChannelUnits(ch))
             chList.append(channel)
         return chList
+
+    def getChannel(self, index):
+        channel = Channel(index, self.getChannelName(index), self.getChannelUnits(index))
+        return channel
 
     def getChannelName(self, index):
         # TODO: index validation check
@@ -165,7 +169,7 @@ class XrkWrapper():
         channelUnits = self.dll.get_channel_units(self.retval,index).decode("utf-8")
         return channelUnits
 
-    def getChannelSamples(self, index):
+    def getChannelData(self, index):
         # TODO: index validation check
 
         count = self.getChannelSamplesCount(index)
@@ -196,10 +200,6 @@ class XrkWrapper():
 
         self.dll.get_lap_info(self.retval, index, start, duration)
         return LapInfo(start.value, duration.value)
-
-    def channelExists(self, index):
-        # TODO: index validation
-        return True
 
     def closeFile(self):
         self.dll.close_file_i(1)

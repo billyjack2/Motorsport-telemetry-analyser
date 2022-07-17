@@ -24,6 +24,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="analyze.py" />
+    <Compile Include="vehicleConfig.py" />
     <Compile Include="xrk_wrapper.py" />
   </ItemGroup>
   <ItemGroup>
