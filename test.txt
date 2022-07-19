@@ -1,0 +1,7 @@
+VehicleConfig: Miata
+Limit: RPM RPM 6700
+Limit: Coolant C 100
+
+VehicleConfig: NP01
+Limit: RPM RPM 14000
+Limit: Coolant C 100
