@@ -1,7 +1,7 @@
 VehicleConfig: Adria Kart
-Limit: RPM RPM 6700
-Limit: Coolant C 53
+Limit: RPM, RPM, 6700
+Limit: Coolant, C, 53
 
 VehicleConfig: NP01
-Limit: RPM RPM 14000
-Limit: Coolant C 100
+Limit: RPM, RPM, 14000
+Limit: Coolant, C, 100

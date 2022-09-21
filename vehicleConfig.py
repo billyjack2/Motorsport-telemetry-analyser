@@ -25,15 +25,21 @@ class VehicleConfig:
                     if line.startswith("VehicleConfig"):
                         
                         # if matches target vehicle name
+                        # This needs to be split by : because VehicleConfig could have a string with spaces
                         if line.split(":")[1].strip() == vehicleName:
                             self.vehicleName = line.split(":")[1].strip()
                             continue
                         else:
                             continue
                     # get the limit
+                    # Limits should be split by , because sensor names may have spaces
                     if self.vehicleName and line.startswith("Limit:"):
-                        limit = line.split(" ")
-                        self.addLimit(Limit(limit[1], limit[2], float(limit[3].strip())))
+                        
+                        # Get everything after the : then split
+                        limit = line.split(":")[1].split(',')
+                        self.addLimit(Limit(limit[0], limit[1], float(limit[2].strip())))
+                        
+                        #TODO Error handling in config
                 
             # if we finished the file and vehicleName is not set then the vehicle is not in the config
             if not self.vehicleName:
