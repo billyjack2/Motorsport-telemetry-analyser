@@ -31,14 +31,13 @@ class Analyze():
 
     
     
-
+    # Check that oil pressure never goes below limit while above the rpm threshold
     def oilPress(self, oilPsiIndex:int, rpmIndex:int):
-        #TODO check that all indexes exist
+
+        oilPsiSamples = self.wrapper.getChannelData( oilPsiIndex )
+        # check if oilPsiSamples returns anything
         
-        oilPsiSamples = self.wrapper.getChannelSamples( oilPsiIndex )
-        # TODO check if index returns anything
-        
-        rpmSamples = self.wrapper.getChannelSamples( rpmIndex )
+        rpmSamples = self.wrapper.getChannelData( rpmIndex )
         
     # Check if rpm limit ever exceeded threshold    
     def rpmLimit(self, rpmIndex: int):
@@ -60,13 +59,15 @@ class Analyze():
                 
         return ExceededLimits(exceededData, MAX_RPM )
 
+    
+
 # class for containing list of exceeded limits of a given channel
 class ExceededLimits():
      def __init__(self, channelData: ChannelData, limit: int):
         self.limit = limit
         self.data = channelData
          
-
+        
 
 
 
@@ -76,7 +77,7 @@ a = Analyze(wrap)
 
 print(wrap.getTrackName())
 
-index = 10
+index = 2
 
 exceeded = a.rpmLimit(index)
 print("Channel: " + wrap.getChannelName(index))

@@ -22,11 +22,11 @@ class VehicleConfig:
                         break
 
                     # find vehicle name
-                    if line.startswith("VehicleConfig:"):
+                    if line.startswith("VehicleConfig"):
                         
                         # if matches target vehicle name
-                        if line.split(" ")[1].strip() == vehicleName:
-                            self.vehicleName = line.split(" ")[1].strip()
+                        if line.split(":")[1].strip() == vehicleName:
+                            self.vehicleName = line.split(":")[1].strip()
                             continue
                         else:
                             continue
@@ -35,6 +35,9 @@ class VehicleConfig:
                         limit = line.split(" ")
                         self.addLimit(Limit(limit[1], limit[2], float(limit[3].strip())))
                 
+            # if we finished the file and vehicleName is not set then the vehicle is not in the config
+            if not self.vehicleName:
+                raise Exception("Vehicle not found in config file")
         
         
         
@@ -68,12 +71,12 @@ class Limit:
 
 
 # TEST code
-config = VehicleConfig("NP01")
-config.addLimit(Limit("RPM", "RPM", 14000))
-config.addLimit(Limit("Coolant", "C", 100))
+#config = VehicleConfig("NP01")
+#config.addLimit(Limit("RPM", "RPM", 14000))
+#config.addLimit(Limit("Coolant", "C", 100))
 
 
-c = VehicleConfig("NP01", "test.txt")
+c = VehicleConfig("Adria Kart", "test.txt")
     
 print(c)
   
