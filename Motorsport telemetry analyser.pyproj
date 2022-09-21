@@ -5,7 +5,7 @@
     <ProjectGuid>e282359e-ba93-467a-943b-b4e289173a94</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>analyze.py</StartupFile>
+    <StartupFile>MTA.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -24,6 +24,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="analyze.py" />
+    <Compile Include="MTA.py" />
     <Compile Include="vehicleConfig.py" />
     <Compile Include="xrk_wrapper.py" />
   </ItemGroup>
